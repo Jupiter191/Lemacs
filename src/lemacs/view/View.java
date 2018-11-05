@@ -2,6 +2,7 @@ package lemacs.view;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
+import java.awt.Dimension;
 
 public class View {
 
@@ -21,6 +22,12 @@ public class View {
 
 	public void initialiseMenuBar(){
 		JMenuBar menuBar = new JMenuBar();
+		final int menuWidth = 0;
+		final int menuHeight = 25;
+		Dimension menuBarSize = new Dimension(menuWidth, menuHeight);
+
+		menuBar.setPreferredSize(menuBarSize);
+		menuBar.setVisible(true);
 		frame.setJMenuBar(menuBar);
 
 		showGUI();
