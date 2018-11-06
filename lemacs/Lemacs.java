@@ -4,24 +4,23 @@ import lemacs.view.View;
 import lemacs.model.Model;
 import lemacs.io.FileHandler;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.io.FileNotFoundException;
-
 public class Lemacs{
 
 	private static final Lemacs lemacs = new Lemacs();
 	private static final View view = new View();
 	private static final Model model = new Model();
-	private static BufferedReader buffReader;
+	private static FileHandler fileHandler;
 
 	public static void main(String[] args){
+		lemacs.start(args);
+	}
 
+	private void start(String[] args){
 		if(args.length == 0){
-			lemacs.newFile();
+			fileHandler.newFile();
 		} else {
-			lemacs.openFile();
+			final String fileToOpen = args[0];
+			fileHandler.openFile(fileToOpen);
 		}
 	}
 
@@ -31,12 +30,16 @@ public class Lemacs{
 	}
 
 
-	private void openFile(){
-		try {
-			throw new IOException();			
+	private void openFile(String fileToOpen){
+		FileReader fileReader = new FileReader(fileToOpen);
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+		
+		try(bufferedReader){
+							
 		} catch(IOException e){
 			//view.alert(e); // alert overload that takes an Exception
 		}
+
 		System.out.println("NO ARGS - openFile() called");
 	}
 }
