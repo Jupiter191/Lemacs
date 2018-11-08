@@ -1,4 +1,4 @@
-package lemacs.io;
+package lemacs.model.io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
